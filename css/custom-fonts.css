@@ -1,0 +1,122 @@
+@font-face {
+    font-family: "Telefonica CAP";
+    src: url(https://googledrive.com/host/0ByvmnlDGs2vmfmlyUTlxVk0tRDJVMURmSmhmeV90c1lJRFZsamNBamhjUjZiUzVPeW9lSG8/fonts/TelefonicaCAP.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Telefonica Script";
+    src: url(https://googledrive.com/host/0ByvmnlDGs2vmfmlyUTlxVk0tRDJVMURmSmhmeV90c1lJRFZsamNBamhjUjZiUzVPeW9lSG8/fonts/TelefonicaScript.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Telefonica Headline-Light";
+    src: url(https://googledrive.com/host/0ByvmnlDGs2vmfmlyUTlxVk0tRDJVMURmSmhmeV90c1lJRFZsamNBamhjUjZiUzVPeW9lSG8/fonts/TelefonicaHeadline-Light.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Telefonica Text-Bold";
+    src: url(https://googledrive.com/host/0ByvmnlDGs2vmfmlyUTlxVk0tRDJVMURmSmhmeV90c1lJRFZsamNBamhjUjZiUzVPeW9lSG8/fonts/TelefonicaText-Bold.ttf) format("truetype");
+}
+.tef-cap {
+    font-family: "Telefonica CAP", Arial Black, Verdana, Tahoma;
+}
+.tef-script {
+    font-family: "Telefonica Script", ;
+}
+.tef-headline {
+    font-family: "Telefonica Headline-Light", Verdana, Tahoma;
+}
+.tef-bold {
+    font-family: "Telefonica Text-Bold", Verdana, Tahoma;
+}
+.bg-blue-1 {
+  background-color: #00C6D7 !important;
+  color:white;
+}
+.bg-blue-2 {
+  background-color: #00B6C7 !important;
+  color:white;
+}
+.bg-blue-3 {
+  background-color: #00A5B7 !important;
+  color:white;
+}
+.bg-blue-4 {
+  background-color: #0095A7 !important;
+  color:white;
+}
+.bg-blue-5 {
+  background-color: #008597 !important;
+  color:white;
+}
+.bg-blue-6 {
+  color:white;
+  background-color: #007486 !important;
+}
+.bg-blue-7 {
+  background-color: #006476 !important;
+  color:white;
+}
+.bg-blue-8 {
+  background-color: #005466 !important;
+  color:white;
+}
+.bg-blue-9 {
+  background-color: #004356 !important;
+  color:white;
+}
+.bg-blue-10 {
+  background-color: #003245 !important;
+  color:white;
+}
+.bg-purple {
+  background-color: #990099 !important;
+}
+.bg-orange {
+  background-color: #FF6633 !important;
+}
+.bg-yellow {
+  background-color: #FFFF00 !important;
+}
+.bg-green {
+  background-color: #00FF99 !important;
+}
+.blue-1 {
+  color: #00C6D7 !important;
+}
+.blue-2 {
+  color: #00B6C7 !important;
+ }
+.blue-3 {
+  color: #00A5B7 !important;
+}
+.blue-4 {
+  color: #0095A7 !important;
+}
+.blue-5 {
+  color: #008597 !important;
+}
+.blue-6 {
+  color: #007486 !important;
+}
+.blue-7 {
+  color: #006476 !important;
+}
+.blue-8 {
+  color: #005466 !important;
+}
+.blue-9 {
+  color: #004356 !important;
+}
+.blue-10 {
+  color: #003245 !important;
+}
+.purple {
+  color: #990099 !important;
+}
+.orange {
+  color: #FF6633 !important;
+}
+.yellow {
+  color: #FFFF00 !important;
+}
+.green {
+  color: #00FF99 !important;
+}

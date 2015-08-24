@@ -1,0 +1,24 @@
+
+ul {
+  height:900px!important;    
+   list-style: none;
+/*  overflow-x: hidden;
+  overflow-y: scroll;
+*/}
+
+ul li {
+  position: relative;
+  z-index: 2;
+  overflow: auto;
+  width:320px;
+}
+ 
+ul li:nth-child(odd) {
+  background: #fff;
+}
+
+.container {
+    overflow-y: scroll!important;
+  margin: 0em auto!important;
+  width: 1020px!important;
+}

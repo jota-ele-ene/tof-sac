@@ -1,0 +1,301 @@
+#scrolling{/*frame*/
+/*
+    position:fixed;
+    top:58%;
+
+    background:#FF8383;
+    height:38%;
+    width:100vw;
+*/
+
+    overflow: hidden!important;
+    height: 450px;
+}
+
+#monthsScrolling.container{
+    overflow: hidden!important;
+  height: 2.5em;
+}
+
+#monthsScrolling ul#monthIndexSlider {
+    margin: 0;
+    padding: 0;
+    height:5em;
+    
+    list-style-type: none;
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+#monthsScrolling ul li {
+  width: 40%;
+    float: left;
+}
+
+
+#scrolling ul {
+ 
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    
+    /*Add if you want to disable the option of selecting the text while sliding*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+/*
+    margin-top:4vh;
+    height:80%;
+*/
+}
+
+
+
+#scrolling ul li {
+  width: 212px;
+    float: left;
+    cursor: pointer;
+    background: #FFF;
+/*
+-webkit-transform:  scale(0.95);
+    -ms-transform:  scale(0.95);
+    -moz-transform:  scale(0.95);
+    transform: scale(0.95);
+*/
+background-image: url("../images/background_timeline.png")!important;
+  background-position-y: -145px;
+  background-repeat: no-repeat;
+    
+}
+/*
+.itemslide-active
+{
+-webkit-transform:  scale(1);
+    -ms-transform:  scale(1);
+    -moz-transform:  scale(1);
+    transform: scale(1);
+
+}
+*/
+#monthsIndex 
+{
+  height: 3em;
+}
+
+#monthsIndex div 
+{
+  position: absolute;
+  height: 2em;
+  width: 8em;
+opacity:1;
+transition: opacity 2s; 
+}
+
+#monthsIndex div.fade {
+opacity:0!important;
+}
+
+#monthsIndex .nextMonth {
+    right: 0;
+  text-align: right;
+  font-weight: normal;
+  font-size: 1.2em;
+    font-family: "Telefonica Headline-Light", Verdana, Tahoma;
+}
+
+#monthsIndex .nowMonth {
+  text-align: center;
+  left: 50%;
+  margin-left: -4em;
+  font-weight: bold;
+  font-size: 2em;
+    font-family: "Telefonica Headline-Light", Verdana, Tahoma;
+}
+
+#monthsIndex .prevMonth {
+  text-align: left;
+  left: 0;
+  font-weight: normal;
+  font-size: 1.2em;
+    font-family: "Telefonica Headline-Light", Verdana, Tahoma;
+}
+
+div#slideSource {
+opacity:1;
+transition: opacity 1s; 
+}
+
+div#slideSource.fade {
+opacity:0;
+}
+
+
+@-webkit-keyframes now-to-left {
+    0% {
+        text-align: center;
+        left: 50%;
+        margin-left: -2.5em;
+        font-weight: bold;
+        font-size: 2em;    
+    }
+    100% {
+        text-align: left;
+        left: 0;
+        font-weight: normal;
+        font-size: 1em;    
+    }
+}
+
+@-webkit-keyframes now-to-right {
+    0% {
+        text-align: center;
+        left: 50%;
+        margin-left: -2.5em;
+        font-weight: bold;
+        font-size: 2em;    
+    }
+    100% {
+        right: 0;
+        text-align: right;
+        font-weight: normal;
+        font-size: 1em;    
+    }
+}
+
+@-webkit-keyframes left-to-now {
+    0% {
+        text-align: left;
+        left: 0;
+        font-weight: normal;
+        font-size: 1em;    
+    }
+    100% {
+        text-align: center;
+        left: 50%;
+        margin-left: -2.5em;
+        font-weight: bold;
+        font-size: 2em;    
+    }
+}
+
+@-webkit-keyframes right-to-now {
+    0% {
+        right: 0;
+        text-align: right;
+        font-weight: normal;
+        font-size: 1em;    
+    }
+    100% {
+        text-align: center;
+        left: 50%;
+        margin-left: -2.5em;
+        font-weight: bold;
+        font-size: 2em;    
+    }
+}
+
+@keyframes now-to-left {
+    0% {
+        text-align: center;
+        left: 50%;
+        margin-left: -2.5em;
+        font-weight: bold;
+        font-size: 2em;    
+    }
+    100% {
+        text-align: left;
+        left: 0;
+        font-weight: normal;
+        font-size: 1em;    
+    }
+}
+
+@keyframes now-to-right {
+    0% {
+        text-align: center;
+        left: 50%;
+        margin-left: -2.5em;
+        font-weight: bold;
+        font-size: 2em;    
+    }
+    100% {
+        right: 0;
+        text-align: right;
+        font-weight: normal;
+        font-size: 1em;    
+    }
+}
+
+@keyframes left-to-now {
+    0% {
+        text-align: left;
+        left: 0;
+        font-weight: normal;
+        font-size: 1em;    
+    }
+    100% {
+        text-align: center;
+        left: 50%;
+        margin-left: -2.5em;
+        font-weight: bold;
+        font-size: 2em;    
+    }
+}
+
+@keyframes right-to-now {
+    0% {
+        right: 0;
+        text-align: right;
+        font-weight: normal;
+        font-size: 1em;    
+    }
+    100% {
+        text-align: center;
+        left: 50%;
+        margin-left: -2.5em;
+        font-weight: bold;
+        font-size: 2em;    
+    }
+}
+
+.now-to-left
+{
+  -webkit-animation: now-to-left 2s;
+  -webkit-animation-fill-mode: forwards; 
+  animation: now-to-left 2s;
+  animation-fill-mode: forwards;
+}
+
+.now-to-right
+{
+  -webkit-animation: now-to-right 2s;
+  -webkit-animation-fill-mode: forwards; 
+  animation: now-to-right 2s;
+  animation-fill-mode: forwards;
+}
+
+.right-to-now
+{
+  -webkit-animation: right-to-now 2s;
+  -webkit-animation-fill-mode: forwards; 
+  animation: right-to-now 2s;
+  animation-fill-mode: forwards;
+}
+
+.left-to-now 
+{
+  -webkit-animation: left-to-now 2s;
+  -webkit-animation-fill-mode: forwards; 
+  animation: left-to-now 2s;
+  animation-fill-mode: forwards;
+}
+
+
+

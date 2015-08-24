@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : TailPiece 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20130902
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="css/tailpiece.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/tailpiece-fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/custom-fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="css/metro-custom.css">
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+    
+<div id="page">
+	
+	<div id="main" class="container">
+	
+		<ul id="boxA" class="boxA flip"></ul>
+		<ul id="boxB" class="boxB curl"></ul>
+		<ul id="boxC" class="boxC tilt"></ul>
+
+	</div>
+
+</div>
+
+<script>
+function loadRecord(arr) {
+    var out = "";
+    var i;
+    var m;
+    var bg;
+    var box= ["boxA", "boxB", "boxC"];
+    for(i = 0; i<arr.length; i++) {
+        bg = 1 + Math.floor(Math.random()*9);
+        m = i % 3;
+        out = "";
+        if (arr[i].image) out += '<img src="' + arr[i].image + '" width="320" alt="" />';
+		out += '<div class="details"><p>' + arr[i].display + '</p></div>';
+        out += '<a href="' + arr[i].url + '" class="button" target="_blank">More Details</a>'; 
+        var div = document.createElement('li');
+        div.setAttribute("class", "box margin-btm bg-blue-"+bg);
+        div.innerHTML = out;
+        document.getElementById(box[m]).appendChild(div);
+    }
+}
+</script>
+
+<script src="data/mediaRecord.js"></script>
+
+<script src="js/stroll/stroll.min.js"></script>
+<script>
+  stroll.bind( '#main ul' );
+</script>
+
+</body>
+</html>
