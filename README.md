@@ -1,2 +1,2 @@
 # tof-sac
-Quick and dirty trials of TOF_ features
+Working repository for quick and dirty trials of TOF_ features
