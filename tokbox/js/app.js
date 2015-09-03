@@ -1,92 +1,114 @@
 // Declare Variables
 var apiKey,
     sessionId,
-    token,
-    session;
+    token;
+    //session;
+var subscriber = 'null';
 
 // get the APIKEY and TOKEN 
 $(document).ready(function() {
 	console.log('Voy a intentar generar la sesion');
+	 $('#stop').hide();
+    archiveID = null;
     getApiAndToken();
 });
 
 
 function getApiAndToken() {
  // make an Ajax Request to get the apiKey, sessionId and token from the server
-    //$.get(SAMPLE_SERVER_BASE_URL + '/session', function(res) {
+    $.get(SAMPLE_SERVER_BASE_URL + '/session', function(res) {
 
-    var apiKey = 45315992;
-	var sessionId = '1_MX40NTMxNTk5Mn5-MTQ0MDE0OTY0MTM5OX5QdGhwa081WlprQ0xhMEhsaHVuODVZYWh-UH4'; 
-	var token = 'T1==cGFydG5lcl9pZD00NTMxNTk5MiZzaWc9OTBmYjdlNTY2MTA2YzZhMWE0NDFiYWQ0ZDAzYjhjZjg0YWYxOWY1NDpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTFfTVg0ME5UTXhOVGs1TW41LU1UUTBNREUwT1RZME1UTTVPWDVRZEdod2EwODFXbHByUTB4aE1FaHNhSFZ1T0RWWllXaC1VSDQmY3JlYXRlX3RpbWU9MTQ0MDE1MTMxMyZub25jZT0wLjIwOTM5MjYyMDkxNDc4MDE3JmV4cGlyZV90aW1lPTE0NDA3NTM3MTYmY29ubmVjdGlvbl9kYXRhPQ==';
-	initializeSession();
+    var apiKey = res.apiKey; //45315992;
+	var sessionId = res.sessionId; //'1_MX40NTMxNTk5Mn5-MTQ0MDE0OTY0MTM5OX5QdGhwa081WlprQ0xhMEhsaHVuODVZYWh-UH4'; 
+	var token = res.token; //'T1==cGFydG5lcl9pZD00NTMxNTk5MiZzaWc9OTBmYjdlNTY2MTA2YzZhMWE0NDFiYWQ0ZDAzYjhjZjg0YWYxOWY1NDpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTFfTVg0ME5UTXhOVGs1TW41LU1UUTBNREUwT1RZME1UTTVPWDVRZEdod2EwODFXbHByUTB4aE1FaHNhSFZ1T0RWWllXaC1VSDQmY3JlYXRlX3RpbWU9MTQ0MDE1MTMxMyZub25jZT0wLjIwOTM5MjYyMDkxNDc4MDE3JmV4cGlyZV90aW1lPTE0NDA3NTM3MTYmY29ubmVjdGlvbl9kYXRhPQ==';
+	//initializeSession();
 	console.log('he pedido iniciar sesión', apiKey, sessionId, token);
-    //});
+    });
 }
 
 
-function initializeSession() {
-    // Initialize Session Object
-    session = OT.initSession(apiKey, sessionId);
+		function Conectar() {
+			console.log('estoy dentro de la función Conectar');
+			subscriber = 'null';
+			var session = OT.initSession(apiKey, sessionId); 
+			  session.on({ 
+				  streamCreated: function(event) { 
+					subscriber = session.subscribe(event.stream, 'subscribersDiv', {width: 800, height: 600, insertMode: 'append', showControls: true}); 
+					console.log('Estoy conectado a una sesión', sessionId, token);
+				  } 
+			  }); 
+			
+			 // Handler for sessionDisconnected event
+   			 session.on('sessionDisconnected', function(event) {
+        		console.log('You were disconnected from the session.', event.reason);
+    		});
 
-    // Subscribe to a newly created stream
-    session.on('streamCreated', function(event) {
-        session.subscribe(event.stream, 'subscriber', {
-            insertMode: 'append',
-            width: '100%',
-            height: '100%'
-        });
-    });
+    		// Handler for archiveStarted event
+    		session.on('archiveStarted', function(event) {
+        		archiveID = event.id;
+    		});
+			
+			  session.connect(token, function(error) {
+				if (error) {
+				  console.log(error.message);
+				} else {
+				  console.log('Estoy conectado a una sesión 2', sessionId, token);
+				}
+			  });
+			  
+		}
+	
+			function Desconectar(subscriberId) {
+			  console.log('Estoy intentando desconectar',subscriberId);
+			  session.unsubscribe(subscriberId);
+				
+			  document.getElementById("iniciar").style.display = "none";
+			 }
+		
+		function Reconectar() {
+			console.log('estoy dentro de la función reconectar');
+			  session.on({ 
+				  streamCreated: function(event) { 
+					session.subscribe(event.stream, 'subscribersDiv', {width: 800, height: 600, insertMode: 'append', showControls: true}); 
+					console.log('Estoy reconectado a una sesión', sessionId, token);
+				  } 
+			  }); 
+			  session.connect(token, function(error) {
+				if (error) {
+				  console.log(error.message);
+				} else {
+				  console.log('Estoy reconectado a una sesión 2', sessionId, token);
+				}
+			  });
+			  document.getElementById("reconectar").style.display = "none";
 
-    // Handler for sessionDisconnected event
-    session.on('sessionDisconnected', function(event) {
-        console.log('You were disconnected from the session.', event.reason);
-    });
+			  document.getElementById("cerrar").style.display = "block";
+			  
+		}
 
-    // Connect to the Session
-    session.connect(token, function(error) {
-        // If the connection is successful, initialize a publisher and publish to the session
-        if (!error) {
-            var publisher = OT.initPublisher('publisher', {
-                insertMode: 'append',
-                width: '100%',
-                height: '100%'
-            });
-
-            session.publish(publisher);
-
-        } else {
-            console.log('There was an error connecting to the session', error.code, error.message);
-        }
-
-    });
-
-    // Receive a message and append it to the history
-    var msgHistory = document.querySelector('#history');
-    session.on('signal:chat', function(event) {
-        var msg = document.createElement('p');
-        msg.innerHTML = event.data;
-        msg.className = event.from.connectionId === session.connection.connectionId ? 'mine' : 'theirs';
-        msgHistory.appendChild(msg);
-        msg.scrollIntoView();
-    });
-
+// Start Recording
+function startArchive() {
+    // make an Ajax Request to start the recording
+    $.post(SAMPLE_SERVER_BASE_URL + '/start/' + sessionId);
+    $('#start').hide();
+    $('#stop').show();
 }
 
 
-// Text Chat
-var form = document.querySelector('form');
-var msgTxt = document.querySelector('#msgTxt');
+// Stop Recording
+function stopArchive() {
+    // make an Ajax Request to stop the recording
+    $.post(SAMPLE_SERVER_BASE_URL + '/stop/' + archiveID);
+    $('#stop').hide();
+    $('#start').show();
+    $('#view').prop('disabled', false);
+}
 
-// Send a signal once the user enters data in the form.This will send the data entered to all participants                      
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
 
-    session.signal({
-        type: 'chat',
-        data: msgTxt.value
-    }, function(error) {
-        if (!error) {
-            msgTxt.value = '';
-        }
-    });
-});
+// View the Archive that was just created
+function viewArchive() {
+    // make an Ajax Request to view the archive
+    window.open(SAMPLE_SERVER_BASE_URL + '/view/' + archiveID);
+    $('#view').prop('disabled', true);
+
+}

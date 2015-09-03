@@ -1,7 +1,16 @@
 body, html {
-    background-color: gray;
+    background-color: whitesmoke;
     height: 100%
 }
+
+.buttons a, .buttons button{
+    background: #0095a7;
+    color: #fff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
 #videos {
     position: absolute;
     width: 70%;
@@ -38,7 +47,7 @@ body, html {
     margin-bottom: 40px;
     overflow: auto;
 }
-input#msgTxt {
+#msgTxt {
     height: 40px;
     position: absolute;
     bottom: 0;

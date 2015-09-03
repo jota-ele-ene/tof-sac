@@ -1,0 +1,93 @@
+<!doctype html>
+<html> 
+  <head>
+	<title> Ejemplo de conexión a sesión con grabación</title>
+	<script src='js/opentok.min.js'></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="/tokbox/css/app.css" rel="stylesheet" type="text/css">	
+  </head> 
+  <!-- https://tokboxquickstart.herokuapp.com/cdxhbppqyi -->
+  <body> 
+    <!-- <div id='myPublisherDiv'></div> -->
+   
+    
+    
+   <!-- <script> 
+      var apiKey = '45315992';
+	  var sessionId = '2_MX40NTMxNTk5Mn5-MTQ0MTA5NzI5MTc0MX5TaG5SaGF4ZTlodGV1NDlDLzR6eGU2cGZ-UH4'; 
+	  var token = 'T1==cGFydG5lcl9pZD00NTMxNTk5MiZzaWc9OTgyOTQyOGY5ZGY5YTY5ZTM3MmEyYTg5Y2FhMTVhNjIyMTA5ODQ1ZDpyb2xlPXN1YnNjcmliZXImc2Vzc2lvbl9pZD0yX01YNDBOVE14TlRrNU1uNS1NVFEwTVRBNU56STVNVGMwTVg1VGFHNVNhR0Y0WlRsb2RHVjFORGxETHpSNmVHVTJjR1otVUg0JmNyZWF0ZV90aW1lPTE0NDEwOTkwODMmbm9uY2U9MC42NjAyOTA3NDI5NzQ3Nzc1JmV4cGlyZV90aW1lPTE0NDM2ODkyNDAmY29ubmVjdGlvbl9kYXRhPQ==';
+      var session = OT.initSession(apiKey, sessionId); 
+    </script> -->
+
+	<div id='botones' style="margin-top:20px; margin-bottom:0px; text-align:center">
+	<button id="iniciar" onclick="Conectar()" style="background:#0095a7; color:#fff; border-radius:4px; text-align:center;">Iniciar Sesión</button>
+
+	<button id="cerrar" onclick="Desconectar(subscriber)" style="background:#0095a7; color:#fff; border-radius:4px; text-align:center;">Finalizar Sesión</button>
+	
+	<!-- <button id="reconectar" onclick="Reconectar()" style="display:none; background:#0095a7; color:#fff; border-radius:4px; text-align:center;">Reconectar Sesión</button>	-->
+	</div>
+	
+	 <div id='subscribersDiv' style="margin-top:25px; margin-left:12%; margin_bottom:100px;"></div> 
+	<div id="buttonholder">
+        <div id="buttons">
+            <button type="button" id="start" onClick="javascript:startArchive()" class="btn btn-danger">Start Recording</button>
+            <button type="button" id="stop" onClick="javascript:stopArchive()" class="btn btn-danger">Stop Recording</button>
+            <button type="button" id="view" onClick="javascript:viewArchive()" class="btn btn-danger" disabled>View Archive</button>
+        </div>
+    </div>  
+	<!-- <script>
+		
+		var subscriber = 'null';
+			function Conectar() {
+			console.log('estoy dentro de la función Conectar');
+			subscriber = 'null';
+			  session.on({ 
+				  streamCreated: function(event) { 
+					subscriber = session.subscribe(event.stream, 'subscribersDiv', {width: 800, height: 600, insertMode: 'append', showControls: true}); 
+					console.log('Estoy conectado a una sesión', sessionId, token);
+				  } 
+			  }); 
+			  session.connect(token, function(error) {
+				if (error) {
+				  console.log(error.message);
+				} else {
+				  console.log('Estoy conectado a una sesión 2', sessionId, token);
+				}
+			  });
+			  
+		}
+	
+			function Desconectar(subscriberId) {
+			  console.log('Estoy intentando desconectar',subscriberId);
+			  session.unsubscribe(subscriberId);
+				
+			  document.getElementById("iniciar").style.display = "none";
+			 }
+		
+		function Reconectar() {
+			console.log('estoy dentro de la función reconectar');
+			  session.on({ 
+				  streamCreated: function(event) { 
+					session.subscribe(event.stream, 'subscribersDiv', {width: 800, height: 600, insertMode: 'append', showControls: true}); 
+					console.log('Estoy reconectado a una sesión', sessionId, token);
+				  } 
+			  }); 
+			  session.connect(token, function(error) {
+				if (error) {
+				  console.log(error.message);
+				} else {
+				  console.log('Estoy reconectado a una sesión 2', sessionId, token);
+				}
+			  });
+			  document.getElementById("reconectar").style.display = "none";
+
+			  document.getElementById("cerrar").style.display = "block";
+			  
+		}
+		</script> -->
+	  
+	<script src="/tokbox/js/config.js"></script>
+    <script src="/tokbox/js/app.js"></script>
+  </body> 
+</html>  
